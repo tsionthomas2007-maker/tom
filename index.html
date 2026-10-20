@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethiopian Tourism Guide Training: Cloze & Communication Assessment</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for polished icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['Cinzel', 'serif']
+          },
+          colors: {
+            ethiopia: {
+              gold: '#D97706',
+              green: '#047857',
+              red: '#B91C1C',
+              dark: '#111827',
+              sand: '#FFFBEB'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .option-btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans selection:bg-amber-200">
+
+  <!-- Header Banner -->
+  <header class="bg-gradient-to-r from-emerald-900 via-stone-900 to-amber-950 text-white shadow-xl border-b-4 border-amber-500">
+    <div class="max-w-5xl mx-auto px-4 py-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center space-x-3 text-center sm:text-left">
+        <div class="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 text-xl shadow-inner">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight font-serif text-amber-300">Ethiopian Tour Guide Training</h1>
+          <p class="text-xs text-emerald-200/90 font-medium tracking-wide">Practical Dialogues & Communication Competency</p>
+        </div>
+      </div>
+
+      <!-- Audio Narrator Indicator -->
+      <div id="narrator-badge" class="flex items-center space-x-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-400/30 text-xs text-amber-200">
+        <span class="relative flex h-2.5 w-2.5">
+          <span id="audio-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 hidden"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+        </span>
+        <i class="fa-solid fa-volume-high text-amber-400"></i>
+        <span id="voice-status">British Narrator Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
+
+    <!-- STEP 1: Registration / Intro Screen -->
+    <div id="intro-screen" class="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 sm:p-10 transition-all duration-300">
+      <div class="text-center max-w-2xl mx-auto mb-6">
+        <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-semibold tracking-wider uppercase mb-2">
+          Assessment & Cloze Module
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Professional Tour Guiding Assessment</h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          Evaluate functional English fluency across 12 field cloze blanks at 
+          <strong class="text-emerald-700">Lalibela</strong>, 
+          <strong class="text-amber-700">Harar Jugol</strong>, and the 
+          <strong class="text-cyan-700">Simien Mountains</strong>.
+        </p>
+      </div>
+
+      <!-- Trainee ID Form -->
+      <form id="trainee-form" onsubmit="event.preventDefault(); startAssessmentAction();" class="max-w-md mx-auto bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-id-card text-emerald-600"></i> Trainee Identification
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <label for="trainee-name" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              Full Name <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="trainee-name" placeholder="e.g., Almaz Tesfaye" required
+                   class="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition" />
+            <p id="name-error" class="text-xs text-red-600 mt-1 hidden">Please provide your full name.</p>
+          </div>
+
+          <div>
+            <label for="trainee-id" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              Trainee ID / Registration No. <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="trainee-id" placeholder="e.g., ETG-2026-449" required
+                   class="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition" />
+            <p id="id-error" class="text-xs text-red-600 mt-1 hidden">Please enter your trainee ID.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-slate-200 flex flex-col gap-3">
+          <button type="submit" id="btn-start" class="w-full py-3.5 px-6 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm sm:text-base rounded-xl shadow-lg hover:shadow-emerald-700/30 transition flex items-center justify-center gap-2 group cursor-pointer">
+            <span>Begin Guided Assessment</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+          </button>
+          <div class="flex items-center justify-center text-xs text-slate-500 gap-1.5 pt-1">
+            <i class="fa-solid fa-headphones text-amber-600"></i>
+            <span>Equipped with a British female instructional voice narrator.</span>
+          </div>
+        </div>
+      </form>
+
+      <!-- Quick Feature Indicators -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center text-xs text-slate-600 pt-6 border-t border-slate-100">
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-500"></i> Instant Feedback & Locking
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-book-open text-emerald-600"></i> 3 Authentic Field Contexts
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-envelope text-blue-600"></i> Auto-Grading & Teacher Email
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Interactive Assessment Screen -->
+    <div id="quiz-screen" class="hidden flex-col gap-6">
+
+      <!-- Top Status Bar & Audio Triggers -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-wrap justify-between items-center gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Progress</span>
+          <div class="w-32 sm:w-48 bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+            <div id="progress-bar" class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300" style="width: 8.33%;"></div>
+          </div>
+          <span id="question-tracker" class="text-xs font-bold text-slate-800">1 of 12</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="text-right hidden sm:block">
+            <div id="badge-trainee-name" class="text-xs font-bold text-slate-900 truncate max-w-[150px]">Trainee</div>
+            <div id="badge-trainee-id" class="text-[10px] text-slate-500 font-mono">ID: -</div>
+          </div>
+          <button id="btn-read-aloud" type="button" title="Listen to narrator" class="flex items-center gap-2 px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-lg text-xs font-semibold transition active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-volume-high text-amber-600" id="speaker-icon"></i>
+            <span id="narrate-btn-text">Read Sentence</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Destination Dialogue Context Box -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl shadow-lg border border-slate-700 overflow-hidden">
+        <div class="bg-slate-950/70 px-5 py-3 border-b border-slate-800 flex justify-between items-center text-xs">
+          <div class="flex items-center space-x-2 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span id="dialogue-destination">Destination Context</span>
+          </div>
+          <span id="dialogue-tag" class="px-2.5 py-0.5 rounded-full bg-emerald-900/80 text-emerald-300 border border-emerald-700/50 font-medium text-[11px]">
+            Target Competency
+          </span>
+        </div>
+        <div class="p-5 sm:p-6 text-slate-200 leading-relaxed text-sm sm:text-base italic custom-scrollbar max-h-48 overflow-y-auto" id="full-dialogue-context">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Active Question Card -->
+      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-7 space-y-6">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span id="blank-badge" class="px-2.5 py-0.5 bg-amber-100 text-amber-900 font-bold text-xs rounded-md">Blank [ 1 ]</span>
+            <span id="function-badge" class="text-xs font-semibold text-slate-500 uppercase">Target Function</span>
+          </div>
+          <h3 id="current-question-sentence" class="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+            <!-- Active sentence with highlight -->
+          </h3>
+        </div>
+
+        <!-- Options Container -->
+        <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Feedback & Rationale Card -->
+        <div id="feedback-card" class="hidden rounded-xl p-4 sm:p-5 border transition-all duration-300">
+          <div class="flex items-start gap-3">
+            <div id="feedback-icon-container" class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <!-- Icon dynamically inserted -->
+            </div>
+            <div class="flex-grow space-y-1">
+              <h4 id="feedback-title" class="text-sm font-bold">Feedback Title</h4>
+              <p id="feedback-text" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <!-- Pedagogical explanation -->
+              </p>
+              <div id="suggested-variations" class="mt-2.5 pt-2 border-t border-slate-200/60 text-xs text-slate-500">
+                <!-- Trainer Rubric Variations -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Controls: Back, Skip, Next -->
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+          <button id="btn-back" type="button" class="px-4 py-2 border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50 font-semibold text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-chevron-left text-[11px]"></i>
+            <span>Previous</span>
+          </button>
+
+          <div class="flex items-center gap-3">
+            <button id="btn-skip" type="button" class="px-4 py-2 text-slate-500 hover:text-slate-800 font-semibold text-xs sm:text-sm transition cursor-pointer">
+              Skip for now
+            </button>
+            <button id="btn-next" type="button" class="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-bold text-xs sm:text-sm shadow-md transition flex items-center gap-2 cursor-pointer">
+              <span id="next-btn-label">Next Blank</span>
+              <i class="fa-solid fa-chevron-right text-[11px]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STEP 3: Teacher Notification & Results Dashboard -->
+    <div id="results-screen" class="hidden bg-white rounded-2xl shadow-xl border border-slate-200/80 p-6 sm:p-10 space-y-8">
+      
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <div id="score-trophy" class="w-16 h-16 mx-auto rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-3xl shadow-sm">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Assessment Completed!</h2>
+        <p class="text-sm text-slate-600">The evaluation for practical Ethiopian guiding communication has been recorded.</p>
+        
+        <!-- Score Board -->
+        <div class="mt-6 bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-inner flex flex-col sm:flex-row items-center justify-around gap-4">
+          <div class="text-center">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Final Score</span>
+            <div class="text-4xl sm:text-5xl font-black text-emerald-700" id="final-score">0 / 12</div>
+          </div>
+          <div class="h-10 w-px bg-slate-200 hidden sm:block"></div>
+          <div class="text-center">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Proficiency Level</span>
+            <div class="text-lg sm:text-xl font-bold text-slate-800" id="proficiency-rating">Certified</div>
+          </div>
+          <div class="h-10 w-px bg-slate-200 hidden sm:block"></div>
+          <div class="text-center">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Accuracy</span>
+            <div class="text-2xl sm:text-3xl font-black text-amber-600" id="score-percentage">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainee Credentials Banner -->
+      <div class="bg-amber-50/50 border border-amber-200/70 rounded-xl p-4 sm:p-5 text-xs sm:text-sm text-slate-700 flex flex-col sm:flex-row justify-between gap-3">
+        <div>
+          <span class="font-bold text-slate-900">Examinee:</span> <span id="summary-trainee-name">-</span>
+        </div>
+        <div>
+          <span class="font-bold text-slate-900">ID Number:</span> <span id="summary-trainee-id" class="font-mono">-</span>
+        </div>
+        <div>
+          <span class="font-bold text-slate-900">Evaluator:</span> <span class="text-emerald-800 font-medium">mesayferedegn2@gmail.com</span>
+        </div>
+      </div>
+
+      <!-- Teacher Email Submission Section -->
+      <div class="bg-gradient-to-r from-emerald-900 to-slate-900 text-white rounded-2xl p-6 sm:p-7 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <h3 class="text-lg font-bold text-amber-300 flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Submit Scores to Evaluator
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-md">
+            Send your official assessment breakdown and timestamp to Trainer Mesay Feredegn (<span class="text-amber-200 underline">mesayferedegn2@gmail.com</span>).
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+          <button id="btn-email-results" type="button" class="w-full sm:w-auto px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-lg transition flex items-center justify-center gap-2 active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <span>Send Grade via Email</span>
+          </button>
+          <button id="btn-copy-report" type="button" class="w-full sm:w-auto px-4 py-3 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 transition flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-regular fa-copy"></i>
+            <span id="copy-btn-text">Copy Summary</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Itemized Performance Audit Table -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+            <i class="fa-solid fa-clipboard-check text-emerald-600"></i> Item Performance Audit
+          </h3>
+          <span class="text-xs text-slate-500">12 Total Criteria</span>
+        </div>
+        
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                <th class="p-3">#</th>
+                <th class="p-3">Destination</th>
+                <th class="p-3">Linguistic Objective</th>
+                <th class="p-3">Trainee Response</th>
+                <th class="p-3">Target Key</th>
+                <th class="p-3 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="results-table-body" class="divide-y divide-slate-100 text-slate-700">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Restart Option -->
+      <div class="text-center pt-4 border-t border-slate-100">
+        <button id="btn-retake" type="button" class="px-5 py-2.5 text-xs sm:text-sm text-slate-600 hover:text-slate-900 font-bold transition flex items-center justify-center gap-2 mx-auto cursor-pointer">
+          <i class="fa-solid fa-rotate-right"></i>
+          <span>Restart Assessment for New Trainee</span>
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Non-blocking Confirmation Modal (Replaces browser confirm) -->
+  <div id="confirm-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 space-y-4 transform transition-all">
+      <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xl mx-auto">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <div class="text-center">
+        <h3 class="text-base font-bold text-slate-900" id="confirm-title">Finish Assessment?</h3>
+        <p class="text-xs text-slate-600 mt-1" id="confirm-msg">You have unanswered questions. Are you sure you wish to submit?</p>
+      </div>
+      <div class="flex gap-2.5 pt-2">
+        <button id="btn-modal-cancel" type="button" class="flex-1 py-2 text-xs font-semibold text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition cursor-pointer">
+          Continue Assessment
+        </button>
+        <button id="btn-modal-confirm" type="button" class="flex-1 py-2 text-xs font-bold text-white bg-emerald-700 rounded-lg hover:bg-emerald-800 transition cursor-pointer">
+          Submit Anyway
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-blocking Alert Toast (Replaces browser alert) -->
+  <div id="toast-modal" class="fixed bottom-6 right-6 max-w-md bg-slate-900 text-white rounded-xl shadow-2xl p-4 border border-slate-700 z-50 hidden transform transition-all">
+    <div class="flex items-start gap-3">
+      <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
+        <i class="fa-solid fa-info"></i>
+      </div>
+      <div class="flex-1">
+        <p id="toast-message" class="text-xs leading-relaxed text-slate-200 whitespace-pre-line"></p>
+      </div>
+      <button onclick="document.getElementById('toast-modal').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden text area for standard document.execCommand('copy') iframe compatibility -->
+  <textarea id="clipboard-helper" class="absolute -left-[9999px] -top-[9999px] opacity-0" aria-hidden="true"></textarea>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>© Ethiopian Heritage & Eco-Tourism Communication Training Series</p>
+      <p class="text-slate-500">Evaluator: <span class="text-slate-300 font-mono">mesayferedegn2@gmail.com</span></p>
+    </div>
+  </footer>
+
+  <script>
+    // --- QUESTION REPOSITORY ---
+    const assessmentData = [
+      {
+        blankIndex: 1,
+        dialogueId: 1,
+        destination: "Lalibela | Rock-Hewn Monasteries",
+        guide: "Dawit",
+        function: "Agency Representation",
+        contextDialogue: `"Good morning, everyone, and a very warm welcome to Lalibela. [ 1 ] Roha Eco-Trekking & Tours, my name is Dawit, and I will be leading you through this sacred valley over the next two days. As we walk between the monastic complexes, please note that these are active places of worship, so remember to remove your shoes before entering and [ 2 ] taking flash photos inside the sanctuaries. If anyone needs assistance navigating the uneven rock steps, please [ 3 ]. We'll begin at Bete Giyorgis—[ 4 ]!"`,
+        sentenceWithBlank: `"Good morning, everyone, and a very warm welcome to Lalibela. _____ Roha Eco-Trekking & Tours, my name is Dawit..."`,
+        spokenPrompt: "Good morning, everyone, and a very warm welcome to Lalibela. On behalf of Roha Eco-Trekking and Tours, my name is Dawit.",
+        options: [
+          { text: "On behalf of", isCorrect: true },
+          { text: "In favor of", isCorrect: false },
+          { text: "Belonging to", isCorrect: false },
+          { text: "According with", isCorrect: false }
+        ],
+        explanation: "'On behalf of' is the recognized professional standard used by tour guides to declare official agency representation. 'In favor of' indicates support or approval, which is contextually incorrect.",
+        suggestedVariations: "Suggested variations: 'On behalf of' / 'Representing'"
+      },
+      {
+        blankIndex: 2,
+        dialogueId: 1,
+        destination: "Lalibela | Rock-Hewn Monasteries",
+        guide: "Dawit",
+        function: "Polite Cultural Etiquette / Prohibition",
+        contextDialogue: `"Good morning, everyone, and a very warm welcome to Lalibela. [ 1 ] Roha Eco-Trekking & Tours, my name is Dawit, and I will be leading you through this sacred valley over the next two days. As we walk between the monastic complexes, please note that these are active places of worship, so remember to remove your shoes before entering and [ 2 ] taking flash photos inside the sanctuaries. If anyone needs assistance navigating the uneven rock steps, please [ 3 ]. We'll begin at Bete Giyorgis—[ 4 ]!"`,
+        sentenceWithBlank: `"...please note that these are active places of worship, so remember to remove your shoes before entering and _____ taking flash photos inside the sanctuaries."`,
+        spokenPrompt: "Please note that these are active places of worship, so remember to remove your shoes before entering and refrain from taking flash photos inside the sanctuaries.",
+        options: [
+          { text: "refrain from", isCorrect: true },
+          { text: "give up", isCorrect: false },
+          { text: "reject to", isCorrect: false },
+          { text: "delay for", isCorrect: false }
+        ],
+        explanation: "'Refrain from' is a courteous, formal prohibition idiom appropriately used in religious sanctuaries. 'Give up' refers to surrendering habits, while 'reject to' is ungrammatical.",
+        suggestedVariations: "Suggested variations: 'refrain from' / 'avoid' / 'abstain from'"
+      },
+      {
+        blankIndex: 3,
+        dialogueId: 1,
+        destination: "Lalibela | Rock-Hewn Monasteries",
+        guide: "Dawit",
+        function: "Guest Safety & Offering Assistance",
+        contextDialogue: `"Good morning, everyone, and a very warm welcome to Lalibela. [ 1 ] Roha Eco-Trekking & Tours, my name is Dawit, and I will be leading you through this sacred valley over the next two days. As we walk between the monastic complexes, please note that these are active places of worship, so remember to remove your shoes before entering and [ 2 ] taking flash photos inside the sanctuaries. If anyone needs assistance navigating the uneven rock steps, please [ 3 ]. We'll begin at Bete Giyorgis—[ 4 ]!"`,
+        sentenceWithBlank: `"If anyone needs assistance navigating the uneven rock steps, please _____."`,
+        spokenPrompt: "If anyone needs assistance navigating the uneven rock steps, please do not hesitate to let me know.",
+        options: [
+          { text: "don't hesitate to let me know", isCorrect: true },
+          { text: "disturb me at once", isCorrect: false },
+          { text: "resist my directions", isCorrect: false },
+          { text: "mind your own steps", isCorrect: false }
+        ],
+        explanation: "'Don't hesitate to let me know' is a warm, hospitable service expression that puts guests at ease regarding their physical safety and assistance.",
+        suggestedVariations: "Suggested variations: 'don't hesitate to let me know' / 'feel free to reach out' / 'ask for assistance'"
+      },
+      {
+        blankIndex: 4,
+        dialogueId: 1,
+        destination: "Lalibela | Rock-Hewn Monasteries",
+        guide: "Dawit",
+        function: "Call to Action / Tour Kick-off",
+        contextDialogue: `"Good morning, everyone, and a very warm welcome to Lalibela. [ 1 ] Roha Eco-Trekking & Tours, my name is Dawit, and I will be leading you through this sacred valley over the next two days. As we walk between the monastic complexes, please note that these are active places of worship, so remember to remove your shoes before entering and [ 2 ] taking flash photos inside the sanctuaries. If anyone needs assistance navigating the uneven rock steps, please [ 3 ]. We'll begin at Bete Giyorgis—[ 4 ]!"`,
+        sentenceWithBlank: `"We'll begin at Bete Giyorgis—_____!"`,
+        spokenPrompt: "We will begin at Bete Giyorgis. Let us get started!",
+        options: [
+          { text: "let's get started", isCorrect: true },
+          { text: "it is all over", isCorrect: false },
+          { text: "take your departure", isCorrect: false },
+          { text: "let it cease", isCorrect: false }
+        ],
+        explanation: "'Let's get started' or 'let us begin' is an energetic, inviting call to action marking the commencement of the itinerary.",
+        suggestedVariations: "Suggested variations: 'let\\'s get started' / 'enjoy your visit' / 'let us begin'"
+      },
+      {
+        blankIndex: 5,
+        dialogueId: 2,
+        destination: "Harar Jugol | Historic Walled City",
+        guide: "Fatima",
+        function: "Formal Guide Self-Introduction",
+        contextDialogue: `"Good evening, esteemed guests. Welcome to Harar, the ancient fortified city of peace and heritage. [ 5 ]—my name is Fatima, and I’ll be accompanying you tonight. We are currently on our way to the outskirts of the centuries-old city walls for the traditional hyena feeding. Before we arrive, let me [ 6 ]: please remain inside the designated viewing perimeter, avoid sudden loud noises, and keep your hands close to your body unless the handler invites you forward. Harar is known for its warmth and vibrant alleyways, and I [ 7 ] you will find this evening unforgettable. [ 8 ]!"`,
+        sentenceWithBlank: `"Good evening, esteemed guests. Welcome to Harar, the ancient fortified city of peace and heritage. _____—my name is Fatima, and I'll be accompanying you tonight."`,
+        spokenPrompt: "Good evening, esteemed guests. Welcome to Harar. Allow me to introduce myself. My name is Fatima.",
+        options: [
+          { text: "Allow me to introduce myself", isCorrect: true },
+          { text: "Admit who I am", isCorrect: false },
+          { text: "Expose my identity", isCorrect: false },
+          { text: "Guess my name", isCorrect: false }
+        ],
+        explanation: "'Allow me to introduce myself' is the established polite convention for formal tour hosting and hospitality.",
+        suggestedVariations: "Suggested variations: 'Allow me to introduce myself' / 'Let me introduce myself'"
+      },
+      {
+        blankIndex: 6,
+        dialogueId: 2,
+        destination: "Harar Jugol | Historic Walled City",
+        guide: "Fatima",
+        function: "Safety Transition & Briefing",
+        contextDialogue: `"Good evening, esteemed guests. Welcome to Harar, the ancient fortified city of peace and heritage. [ 5 ]—my name is Fatima, and I’ll be accompanying you tonight. We are currently on our way to the outskirts of the centuries-old city walls for the traditional hyena feeding. Before we arrive, let me [ 6 ]: please remain inside the designated viewing perimeter, avoid sudden loud noises, and keep your hands close to your body unless the handler invites you forward. Harar is known for its warmth and vibrant alleyways, and I [ 7 ] you will find this evening unforgettable. [ 8 ]!"`,
+        sentenceWithBlank: `"Before we arrive, let me _____: please remain inside the designated viewing perimeter, avoid sudden loud noises..."`,
+        spokenPrompt: "Before we arrive, let me share a quick safety reminder.",
+        options: [
+          { text: "share a quick safety reminder", isCorrect: true },
+          { text: "threaten you with consequences", isCorrect: false },
+          { text: "disregard the upcoming dangers", isCorrect: false },
+          { text: "gossip about the predators", isCorrect: false }
+        ],
+        explanation: "'Share a quick safety reminder' sets a professional, proactive, and calm atmosphere prior to high-adrenaline encounters like the Harar hyena feeding.",
+        suggestedVariations: "Suggested variations: 'share a quick safety reminder' / 'brief you on safety rules'"
+      },
+      {
+        blankIndex: 7,
+        dialogueId: 2,
+        destination: "Harar Jugol | Historic Walled City",
+        guide: "Fatima",
+        function: "Guest Reassurance & Confidence",
+        contextDialogue: `"Good evening, esteemed guests. Welcome to Harar, the ancient fortified city of peace and heritage. [ 5 ]—my name is Fatima, and I’ll be accompanying you tonight. We are currently on our way to the outskirts of the centuries-old city walls for the traditional hyena feeding. Before we arrive, let me [ 6 ]: please remain inside the designated viewing perimeter, avoid sudden loud noises, and keep your hands close to your body unless the handler invites you forward. Harar is known for its warmth and vibrant alleyways, and I [ 7 ] you will find this evening unforgettable. [ 8 ]!"`,
+        sentenceWithBlank: `"Harar is known for its warmth and vibrant alleyways, and I _____ you will find this evening unforgettable."`,
+        spokenPrompt: "Harar is known for its warmth and vibrant alleyways, and I am confident that you will find this evening unforgettable.",
+        options: [
+          { text: "am confident that", isCorrect: true },
+          { text: "remain doubtful that", isCorrect: false },
+          { text: "hesitate whether", isCorrect: false },
+          { text: "suspiciously claim", isCorrect: false }
+        ],
+        explanation: "'Am confident that' conveys positive enthusiasm and builds trust, projecting the guide's mastery over the experience.",
+        suggestedVariations: "Suggested variations: 'am confident that' / 'promise that' / 'guarantee that'"
+      },
+      {
+        blankIndex: 8,
+        dialogueId: 2,
+        destination: "Harar Jugol | Historic Walled City",
+        guide: "Fatima",
+        function: "Closing Transition to Activity",
+        contextDialogue: `"Good evening, esteemed guests. Welcome to Harar, the ancient fortified city of peace and heritage. [ 5 ]—my name is Fatima, and I’ll be accompanying you tonight. We are currently on our way to the outskirts of the centuries-old city walls for the traditional hyena feeding. Before we arrive, let me [ 6 ]: please remain inside the designated viewing perimeter, avoid sudden loud noises, and keep your hands close to your body unless the handler invites you forward. Harar is known for its warmth and vibrant alleyways, and I [ 7 ] you will find this evening unforgettable. [ 8 ]!"`,
+        sentenceWithBlank: `"Harar is known for its warmth and vibrant alleyways, and I am confident that you will find this evening unforgettable. _____!"`,
+        spokenPrompt: "Let us head out and enjoy the experience!",
+        options: [
+          { text: "Let's head out", isCorrect: true },
+          { text: "Call it off", isCorrect: false },
+          { text: "Retreat immediately", isCorrect: false },
+          { text: "Break up the group", isCorrect: false }
+        ],
+        explanation: "'Let's head out' is a natural, dynamic transitional phrase motivating the tour group to advance into the field.",
+        suggestedVariations: "Suggested variations: 'Let\\'s head out' / 'Enjoy the experience' / 'Welcome once again'"
+      },
+      {
+        blankIndex: 9,
+        dialogueId: 3,
+        destination: "Simien Mountains National Park | Debark Gateway",
+        guide: "Yohannes",
+        function: "Formal Welcome & Hospitality",
+        contextDialogue: `"Welcome to Debark, the gateway to the Simien Mountains National Park! On behalf of the local guides association, [ 9 ] to our spectacular Roof of Africa. The drive from the park headquarters to our first viewpoint at Buyit Ras will [ 10 ] about forty-five minutes. Right now, I need to go over a few [ 11 ]: because we will be reaching elevations above 3,000 meters, remember to drink plenty of water and [ 12 ]. Keep an eye out along the cliffs—you are very likely to spot troops of endemic Gelada baboons grazing nearby."`,
+        sentenceWithBlank: `"On behalf of the local guides association, _____ to our spectacular Roof of Africa."`,
+        spokenPrompt: "On behalf of the local guides association, it is a great pleasure to welcome you to our spectacular Roof of Africa.",
+        options: [
+          { text: "it is a great pleasure to welcome you", isCorrect: true },
+          { text: "it causes immense trouble receiving you", isCorrect: false },
+          { text: "we have no choice but to meet you", isCorrect: false },
+          { text: "you are obliged to come", isCorrect: false }
+        ],
+        explanation: "'It is a great pleasure to welcome you' exemplifies the traditional Ethiopian hospitality standard in professional eco-tourism.",
+        suggestedVariations: "Suggested variations: 'it is a great pleasure to welcome you' / 'I\\'d like to extend a warm welcome'"
+      },
+      {
+        blankIndex: 10,
+        dialogueId: 3,
+        destination: "Simien Mountains National Park | Debark Gateway",
+        guide: "Yohannes",
+        function: "Travel Time & Route Logistics",
+        contextDialogue: `"Welcome to Debark, the gateway to the Simien Mountains National Park! On behalf of the local guides association, [ 9 ] to our spectacular Roof of Africa. The drive from the park headquarters to our first viewpoint at Buyit Ras will [ 10 ] about forty-five minutes. Right now, I need to go over a few [ 11 ]: because we will be reaching elevations above 3,000 meters, remember to drink plenty of water and [ 12 ]. Keep an eye out along the cliffs—you are very likely to spot troops of endemic Gelada baboons grazing nearby."`,
+        sentenceWithBlank: `"The drive from the park headquarters to our first viewpoint at Buyit Ras will _____ about forty-five minutes."`,
+        spokenPrompt: "The drive from the park headquarters to our first viewpoint at Buyit Ras will take approximately forty-five minutes.",
+        options: [
+          { text: "take approximately", isCorrect: true },
+          { text: "waste precisely", isCorrect: false },
+          { text: "consume roughly behind", isCorrect: false },
+          { text: "postpone about", isCorrect: false }
+        ],
+        explanation: "'Take approximately' is accurate and neutral terminology for managing tourist logistical expectations and travel duration.",
+        suggestedVariations: "Suggested variations: 'take approximately' / 'take around' / 'last roughly'"
+      },
+      {
+        blankIndex: 11,
+        dialogueId: 3,
+        destination: "Simien Mountains National Park | Debark Gateway",
+        guide: "Yohannes",
+        function: "High-Altitude Health Briefing",
+        contextDialogue: `"Welcome to Debark, the gateway to the Simien Mountains National Park! On behalf of the local guides association, [ 9 ] to our spectacular Roof of Africa. The drive from the park headquarters to our first viewpoint at Buyit Ras will [ 10 ] about forty-five minutes. Right now, I need to go over a few [ 11 ]: because we will be reaching elevations above 3,000 meters, remember to drink plenty of water and [ 12 ]. Keep an eye out along the cliffs—you are very likely to spot troops of endemic Gelada baboons grazing nearby."`,
+        sentenceWithBlank: `"Right now, I need to go over a few _____: because we will be reaching elevations above 3,000 meters..."`,
+        spokenPrompt: "Right now, I need to go over a few essential safety precautions.",
+        options: [
+          { text: "essential safety precautions", isCorrect: true },
+          { text: "superstitions and rumors", isCorrect: false },
+          { text: "casual side remarks", isCorrect: false },
+          { text: "unimportant complaints", isCorrect: false }
+        ],
+        explanation: "'Essential safety precautions' alerts trekkers to critical health instructions like altitude sickness management and physical hydration.",
+        suggestedVariations: "Suggested variations: 'essential safety precautions' / 'important health tips' / 'guidelines'"
+      },
+      {
+        blankIndex: 12,
+        dialogueId: 3,
+        destination: "Simien Mountains National Park | Debark Gateway",
+        guide: "Yohannes",
+        function: "Acclimatization & Pacing Advice",
+        contextDialogue: `"Welcome to Debark, the gateway to the Simien Mountains National Park! On behalf of the local guides association, [ 9 ] to our spectacular Roof of Africa. The drive from the park headquarters to our first viewpoint at Buyit Ras will [ 10 ] about forty-five minutes. Right now, I need to go over a few [ 11 ]: because we will be reaching elevations above 3,000 meters, remember to drink plenty of water and [ 12 ]. Keep an eye out along the cliffs—you are very likely to spot troops of endemic Gelada baboons grazing nearby."`,
+        sentenceWithBlank: `"...remember to drink plenty of water and _____."`,
+        spokenPrompt: "Remember to drink plenty of water and pace yourself.",
+        options: [
+          { text: "pace yourself", isCorrect: true },
+          { text: "sprint ahead", isCorrect: false },
+          { text: "hold your breath", isCorrect: false },
+          { text: "rush uphill", isCorrect: false }
+        ],
+        explanation: "'Pace yourself' is vital medical and guiding advice when ascending above 3,000 meters in the Simien Mountains to prevent Acute Mountain Sickness (AMS).",
+        suggestedVariations: "Suggested variations: 'pace yourself' / 'walk at an easy pace' / 'take slow, steady breaths'"
+      }
+    ];
+
+    // --- APPLICATION STATE ---
+    let traineeInfo = { name: "", id: "" };
+    let currentIndex = 0;
+    let userResponses = new Array(assessmentData.length).fill(null);
+
+    // --- STREAMING_CHUNK:Configuring speech synthesis narrator engine ---
+    let synth = window.speechSynthesis;
+    let britishFemaleVoice = null;
+
+    function initSpeechSynthesis() {
+      if (!('speechSynthesis' in window)) {
+        const badge = document.getElementById('voice-status');
+        if (badge) badge.textContent = "Audio unsupported";
+        return;
+      }
+
+      function loadVoices() {
+        const voices = synth.getVoices();
+        britishFemaleVoice = voices.find(v => 
+          (v.lang === 'en-GB' || v.lang === 'en_GB') && 
+          (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('libby') || v.name.toLowerCase().includes('serena') || v.name.toLowerCase().includes('victoria') || v.name.includes('Natural'))
+        ) || voices.find(v => v.lang === 'en-GB' || v.lang === 'en_GB') 
+          || voices.find(v => v.lang.startsWith('en'));
+
+        const badge = document.getElementById('voice-status');
+        if (badge && britishFemaleVoice) {
+          badge.textContent = "British Narrator: " + (britishFemaleVoice.name.split(' ')[0] || "Ready");
+        }
+      }
+
+      loadVoices();
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+    }
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      try {
+        synth.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        if (britishFemaleVoice) {
+          utterance.voice = britishFemaleVoice;
+        } else {
+          utterance.lang = 'en-GB';
+        }
+        utterance.pitch = 1.05;
+        utterance.rate = 0.95;
+
+        const audioPulse = document.getElementById('audio-pulse');
+        const speakerIcon = document.getElementById('speaker-icon');
+        const narrateBtnText = document.getElementById('narrate-btn-text');
+
+        utterance.onstart = () => {
+          if (audioPulse) audioPulse.classList.remove('hidden');
+          if (speakerIcon) speakerIcon.className = "fa-solid fa-waveform animate-pulse text-amber-500";
+          if (narrateBtnText) narrateBtnText.textContent = "Speaking...";
+        };
+
+        utterance.onend = utterance.onerror = () => {
+          if (audioPulse) audioPulse.classList.add('hidden');
+          if (speakerIcon) speakerIcon.className = "fa-solid fa-volume-high text-amber-600";
+          if (narrateBtnText) narrateBtnText.textContent = "Read Sentence";
+        };
+
+        synth.speak(utterance);
+      } catch (e) {
+        console.error("Speech error", e);
+      }
+    }
+
+    // --- STREAMING_CHUNK:Implementing event dispatchers and start sequence ---
+    function showToast(msg) {
+      const toast = document.getElementById('toast-modal');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 5000);
+    }
+
+    function startAssessmentAction() {
+      const nameInput = document.getElementById('trainee-name');
+      const idInput = document.getElementById('trainee-id');
+      const nameError = document.getElementById('name-error');
+      const idError = document.getElementById('id-error');
+
+      const name = nameInput.value.trim();
+      const id = idInput.value.trim();
+
+      let valid = true;
+      if (!name) {
+        nameError.classList.remove('hidden');
+        nameInput.focus();
+        valid = false;
+      } else {
+        nameError.classList.add('hidden');
+      }
+
+      if (!id) {
+        idError.classList.remove('hidden');
+        if (valid) idInput.focus();
+        valid = false;
+      } else {
+        idError.classList.add('hidden');
+      }
+
+      if (!valid) return;
+
+      // Assign verified trainee values
+      traineeInfo.name = name;
+      traineeInfo.id = id;
+
+      document.getElementById('badge-trainee-name').textContent = name;
+      document.getElementById('badge-trainee-id').textContent = "ID: " + id;
+
+      // Switch views safely
+      document.getElementById('intro-screen').classList.add('hidden');
+      const quiz = document.getElementById('quiz-screen');
+      quiz.classList.remove('hidden');
+      quiz.classList.add('flex');
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Start Question 1
+      renderQuestion();
+      speakText(`Welcome ${name}. Let us begin Dialogue 1 at Lalibela.`);
+    }
+
+    // --- STREAMING_CHUNK:Rendering cloze blanks, irreversible locks, and feedback ---
+    function renderQuestion() {
+      const item = assessmentData[currentIndex];
+      const answered = userResponses[currentIndex] !== null;
+
+      const currentNum = currentIndex + 1;
+      const totalNum = assessmentData.length;
+      document.getElementById('question-tracker').textContent = `${currentNum} of ${totalNum}`;
+      document.getElementById('progress-bar').style.width = `${(currentNum / totalNum) * 100}%`;
+
+      const nextBtnLabel = document.getElementById('next-btn-label');
+      if (currentIndex === totalNum - 1) {
+        nextBtnLabel.textContent = "Finish & Submit";
+      } else {
+        nextBtnLabel.textContent = "Next Blank";
+      }
+
+      const btnBack = document.getElementById('btn-back');
+      if (currentIndex === 0) {
+        btnBack.classList.add('opacity-40', 'pointer-events-none');
+      } else {
+        btnBack.classList.remove('opacity-40', 'pointer-events-none');
+      }
+
+      document.getElementById('dialogue-destination').textContent = item.destination;
+      document.getElementById('function-badge').textContent = item.function;
+      document.getElementById('blank-badge').textContent = `Blank [ ${item.blankIndex} ]`;
+      document.getElementById('dialogue-tag').textContent = `Guide: ${item.guide}`;
+
+      // Highlight the targeted cloze blank in dialogue
+      const highlightedDialogue = item.contextDialogue.replace(
+        `[ ${item.blankIndex} ]`,
+        `<span class="bg-amber-400 text-slate-950 font-bold px-2 py-0.5 rounded shadow-sm">[ ${item.blankIndex} ]</span>`
+      );
+      document.getElementById('full-dialogue-context').innerHTML = highlightedDialogue;
+
+      // Format sentence with marked blank
+      document.getElementById('current-question-sentence').innerHTML = item.sentenceWithBlank.replace(
+        "_____", 
+        `<span class="inline-block border-b-2 border-dashed border-amber-500 text-amber-600 font-extrabold px-3 py-0.5">[ ${item.blankIndex} ]</span>`
+      );
+
+      // Render Options
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+      document.getElementById('feedback-card').classList.add('hidden');
+
+      item.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `option-btn w-full text-left p-4 rounded-xl font-medium text-sm border flex items-center justify-between shadow-sm transition active:scale-[0.99] cursor-pointer`;
+
+        if (!answered) {
+          btn.classList.add('bg-white', 'hover:bg-amber-50/70', 'border-slate-200', 'text-slate-800', 'hover:border-amber-300');
+          btn.innerHTML = `
+            <span class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-slate-100 border border-slate-300 text-slate-600 text-xs font-bold flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+              <span>${opt.text}</span>
+            </span>
+            <i class="fa-regular fa-circle text-slate-300"></i>
+          `;
+          btn.addEventListener('click', () => handleOptionSelection(idx));
+        } else {
+          // Locked - once chosen, cannot be changed
+          btn.classList.add('cursor-default', 'pointer-events-none');
+          const isSelected = userResponses[currentIndex].selectedOptionIndex === idx;
+
+          if (opt.isCorrect) {
+            btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-950', 'ring-1', 'ring-emerald-500');
+            btn.innerHTML = `
+              <span class="flex items-center gap-3 font-semibold">
+                <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+                <span>${opt.text}</span>
+              </span>
+              <span class="flex items-center gap-1.5 text-xs text-emerald-700 font-bold">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i> Correct Answer
+              </span>
+            `;
+          } else if (isSelected && !opt.isCorrect) {
+            btn.classList.add('bg-red-50', 'border-red-500', 'text-red-950', 'ring-1', 'ring-red-500');
+            btn.innerHTML = `
+              <span class="flex items-center gap-3 font-semibold">
+                <span class="w-6 h-6 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+                <span>${opt.text}</span>
+              </span>
+              <span class="flex items-center gap-1.5 text-xs text-red-700 font-bold">
+                <i class="fa-solid fa-circle-xmark text-red-600 text-base"></i> Your Selection
+              </span>
+            `;
+          } else {
+            btn.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-400', 'opacity-60');
+            btn.innerHTML = `
+              <span class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-400 text-xs font-bold flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+                <span>${opt.text}</span>
+              </span>
+              <i class="fa-regular fa-circle text-slate-200"></i>
+            `;
+          }
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+
+      if (answered) {
+        showFeedback(userResponses[currentIndex].isCorrect, item);
+      }
+    }
+
+    function handleOptionSelection(selectedIndex) {
+      const item = assessmentData[currentIndex];
+      const selectedOption = item.options[selectedIndex];
+      const isCorrect = selectedOption.isCorrect;
+
+      // Lock response into state
+      userResponses[currentIndex] = {
+        selectedOptionIndex: selectedIndex,
+        isCorrect: isCorrect,
+        text: selectedOption.text
+      };
+
+      if (isCorrect) {
+        speakText("Spot on! That is the appropriate guiding expression.");
+      } else {
+        speakText("Not quite. Let us examine the cultural etiquette for this destination.");
+      }
+
+      renderQuestion();
+    }
+
+    function showFeedback(isCorrect, item) {
+      const feedbackCard = document.getElementById('feedback-card');
+      const feedbackIconContainer = document.getElementById('feedback-icon-container');
+      const feedbackTitle = document.getElementById('feedback-title');
+      const feedbackText = document.getElementById('feedback-text');
+      const variationsDisplay = document.getElementById('suggested-variations');
+
+      feedbackCard.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedbackCard.className = "rounded-xl p-4 sm:p-5 border bg-emerald-50/80 border-emerald-300 text-emerald-950 transition-all";
+        feedbackIconContainer.className = "w-8 h-8 rounded-full bg-emerald-200 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 text-base font-bold";
+        feedbackIconContainer.innerHTML = '<i class="fa-solid fa-check"></i>';
+        feedbackTitle.className = "text-sm font-bold text-emerald-900";
+        feedbackTitle.textContent = "Excellent Professional Guiding Standard!";
+      } else {
+        feedbackCard.className = "rounded-xl p-4 sm:p-5 border bg-amber-50/90 border-amber-300 text-amber-950 transition-all";
+        feedbackIconContainer.className = "w-8 h-8 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 text-base font-bold";
+        feedbackIconContainer.innerHTML = '<i class="fa-solid fa-lightbulb"></i>';
+        feedbackTitle.className = "text-sm font-bold text-amber-900";
+        feedbackTitle.textContent = "Linguistic Objective & Rubric Correction:";
+      }
+
+      feedbackText.textContent = item.explanation;
+      variationsDisplay.textContent = item.suggestedVariations;
+    }
+
+    function advanceNext() {
+      if (currentIndex < assessmentData.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    // --- STREAMING_CHUNK:Implementing final grading and non-blocking modals ---
+    function triggerSubmissionFlow() {
+      const unansweredCount = userResponses.filter(r => r === null).length;
+      if (unansweredCount > 0) {
+        // Show non-blocking modal instead of confirm()
+        const modal = document.getElementById('confirm-modal');
+        document.getElementById('confirm-title').textContent = "Incomplete Assessment";
+        document.getElementById('confirm-msg').textContent = `You have ${unansweredCount} skipped/unanswered blank(s). Do you still wish to finalize and submit to your evaluator?`;
+        modal.classList.remove('hidden');
+        return;
+      }
+      finalizeGrading();
+    }
+
+    function finalizeGrading() {
+      document.getElementById('confirm-modal').classList.add('hidden');
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-screen').classList.remove('flex');
+      document.getElementById('results-screen').classList.remove('hidden');
+
+      let correctAnswers = 0;
+      userResponses.forEach(res => {
+        if (res && res.isCorrect) correctAnswers++;
+      });
+
+      const totalItems = assessmentData.length;
+      const percentage = Math.round((correctAnswers / totalItems) * 100);
+
+      document.getElementById('final-score').textContent = `${correctAnswers} / ${totalItems}`;
+      document.getElementById('score-percentage').textContent = `${percentage}%`;
+      document.getElementById('summary-trainee-name').textContent = traineeInfo.name;
+      document.getElementById('summary-trainee-id').textContent = traineeInfo.id;
+
+      const ratingDisplay = document.getElementById('proficiency-rating');
+      if (percentage >= 90) {
+        ratingDisplay.textContent = "Distinction (Senior Guide)";
+        ratingDisplay.className = "text-lg sm:text-xl font-bold text-emerald-700";
+      } else if (percentage >= 75) {
+        ratingDisplay.textContent = "Certified Professional Guide";
+        ratingDisplay.className = "text-lg sm:text-xl font-bold text-emerald-600";
+      } else if (percentage >= 50) {
+        ratingDisplay.textContent = "Provisional / Mentorship Needed";
+        ratingDisplay.className = "text-lg sm:text-xl font-bold text-amber-600";
+      } else {
+        ratingDisplay.textContent = "Refresher Training Required";
+        ratingDisplay.className = "text-lg sm:text-xl font-bold text-red-600";
+      }
+
+      // Populate audit breakdown
+      const tableBody = document.getElementById('results-table-body');
+      tableBody.innerHTML = '';
+
+      assessmentData.forEach((item, index) => {
+        const response = userResponses[index];
+        const row = document.createElement('tr');
+        row.className = index % 2 === 0 ? "bg-white" : "bg-slate-50/70";
+
+        const correctOption = item.options.find(o => o.isCorrect).text;
+        const traineeChoice = response ? response.text : "<span class='italic text-slate-400'>Unanswered</span>";
+        const isCorrect = response ? response.isCorrect : false;
+
+        row.innerHTML = `
+          <td class="p-3 font-bold text-slate-900">[ ${item.blankIndex} ]</td>
+          <td class="p-3 text-xs font-medium text-slate-600">${item.destination.split('|')[0]}</td>
+          <td class="p-3 text-xs text-slate-500">${item.function}</td>
+          <td class="p-3 font-medium ${isCorrect ? 'text-emerald-700' : 'text-red-700'}">${traineeChoice}</td>
+          <td class="p-3 font-semibold text-emerald-800">${correctOption}</td>
+          <td class="p-3 text-center">
+            ${isCorrect 
+              ? '<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800"><i class="fa-solid fa-check mr-1"></i> Pass</span>' 
+              : '<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-800"><i class="fa-solid fa-xmark mr-1"></i> Review</span>'
+            }
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+
+      speakText(`Well done, ${traineeInfo.name}. You scored ${correctAnswers} out of 12. Please submit your final score report via email.`);
+    }
+
+    // --- STREAMING_CHUNK:Configuring email transmission and fallback copy features ---
+    function buildReportText() {
+      let correctAnswers = 0;
+      userResponses.forEach(res => {
+        if (res && res.isCorrect) correctAnswers++;
+      });
+      const percentage = Math.round((correctAnswers / assessmentData.length) * 100);
+
+      let breakdownText = "";
+      assessmentData.forEach((item, idx) => {
+        const res = userResponses[idx];
+        const status = (res && res.isCorrect) ? "CORRECT" : "INCORRECT";
+        const userChoice = res ? res.text : "Skipped";
+        const targetAnswer = item.options.find(o => o.isCorrect).text;
+        breakdownText += `Blank [${item.blankIndex}] (${item.destination}): ${userChoice} -> ${status} [Key: ${targetAnswer}]\n`;
+      });
+
+      return `ETHIOPIAN TOURISM GUIDE ASSESSMENT REPORT
+--------------------------------------------------
+Trainee Name: ${traineeInfo.name}
+Registration ID: ${traineeInfo.id}
+Date & Time: ${new Date().toLocaleString()}
+Official Score: ${correctAnswers} / ${assessmentData.length} (${percentage}%)
+Evaluator: mesayferedegn2@gmail.com
+--------------------------------------------------
+ITEM AUDIT BREAKDOWN:
+${breakdownText}
+--------------------------------------------------
+Ethiopian Heritage & Eco-Tourism Communication Training Module`;
+    }
+
+    function dispatchEmailToTeacher() {
+      const recipient = "mesayferedegn2@gmail.com";
+      const subject = encodeURIComponent(`Assessment Results: ${traineeInfo.name} [ID: ${traineeInfo.id}]`);
+      const body = encodeURIComponent(buildReportText());
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    }
+
+    function copyReportToClipboard() {
+      const report = buildReportText();
+      const helper = document.getElementById('clipboard-helper');
+      helper.value = report;
+      helper.select();
+      helper.setSelectionRange(0, 99999);
+
+      let success = false;
+      try {
+        success = document.execCommand('copy');
+      } catch (err) {
+        success = false;
+      }
+
+      if (success) {
+        const copyBtnText = document.getElementById('copy-btn-text');
+        copyBtnText.textContent = "Report Copied!";
+        setTimeout(() => {
+          copyBtnText.textContent = "Copy Summary";
+        }, 2500);
+        showToast("Report successfully copied to your clipboard!");
+      } else {
+        showToast("Summary generated:\n\n" + report);
+      }
+    }
+
+    function resetAssessment() {
+      userResponses = new Array(assessmentData.length).fill(null);
+      currentIndex = 0;
+      document.getElementById('trainee-name').value = "";
+      document.getElementById('trainee-id').value = "";
+      document.getElementById('results-screen').classList.add('hidden');
+      document.getElementById('intro-screen').classList.remove('hidden');
+    }
+
+    // --- STREAMING_CHUNK:Attaching event listeners on window load ---
+    window.addEventListener('DOMContentLoaded', () => {
+      initSpeechSynthesis();
+
+      // Start triggers
+      const btnStart = document.getElementById('btn-start');
+      if (btnStart) {
+        btnStart.addEventListener('click', (e) => {
+          e.preventDefault();
+          startAssessmentAction();
+        });
+      }
+
+      // Quiz Navigation triggers
+      document.getElementById('btn-back').addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderQuestion();
+        }
+      });
+
+      document.getElementById('btn-skip').addEventListener('click', advanceNext);
+
+      document.getElementById('btn-next').addEventListener('click', () => {
+        if (currentIndex === assessmentData.length - 1) {
+          triggerSubmissionFlow();
+        } else {
+          advanceNext();
+        }
+      });
+
+      document.getElementById('btn-read-aloud').addEventListener('click', () => {
+        const item = assessmentData[currentIndex];
+        speakText(item.spokenPrompt);
+      });
+
+      // Modal Confirmation triggers
+      document.getElementById('btn-modal-cancel').addEventListener('click', () => {
+        document.getElementById('confirm-modal').classList.add('hidden');
+      });
+
+      document.getElementById('btn-modal-confirm').addEventListener('click', () => {
+        finalizeGrading();
+      });
+
+      // Result screen triggers
+      document.getElementById('btn-email-results').addEventListener('click', dispatchEmailToTeacher);
+      document.getElementById('btn-copy-report').addEventListener('click', copyReportToClipboard);
+      document.getElementById('btn-retake').addEventListener('click', resetAssessment);
+    });
+  </script>
+</body>
+</html>
